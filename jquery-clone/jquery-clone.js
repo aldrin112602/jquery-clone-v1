@@ -135,6 +135,20 @@ class Selector extends Array {
     value && (this[0].innerText = value);
     return this[0].innerText;
   }
+
+  /**
+   * Gets or sets an attribute of the first element in the collection.
+   * @param {string} key - The name of the attribute to get or set.
+   * @param {string} [value] - The value of the attribute to set.
+   * @returns {string|Selector} If a value is not specified, returns the value of the attribute. If a value is specified, returns the current instance of Selector.
+   */
+  attr(key, value) {
+    if (key && typeof key === "string" && !value) {
+      return this[0].getAttribute(key);
+    }
+    this[0].setAttribute(key, value);
+    return this;
+  }
 }
 
 /**
