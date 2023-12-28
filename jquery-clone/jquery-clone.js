@@ -1,4 +1,12 @@
 /**
+ * @license jqueryClone v0.0.1
+ *
+ * jquery-clone.js
+ *
+ * (c) Aldrin Caballero | Dec. 28, 2023
+ * https://github.com/aldrin112602/jquery-clone-v1
+ * 
+ * 
  * Creates a new instance of Selector.
  * @param {string|NodeListOf<Element>|HTMLCollectionOf<Element>|Array<Element>} selector - A CSS selector, a node list, a collection, or an array of elements.
  */
