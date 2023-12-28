@@ -149,6 +149,30 @@ class Selector extends Array {
     this[0].setAttribute(key, value);
     return this;
   }
+
+  /**
+   * Adds content after each element in the collection.
+   * @param {string} content - The content to add after each element.
+   * @returns {Selector} The current instance of Selector.
+   */
+  after(content) {
+    this.forEach((element) => {
+      element.insertAdjacentHTML("afterend", content);
+    });
+    return this;
+  }
+
+  /**
+   * Adds content before each element in the collection.
+   * @param {string} content - The content to add before each element.
+   * @returns {Selector} The current instance of Selector.
+   */
+  before(content) {
+    this.forEach((element) => {
+      element.insertAdjacentHTML("beforebegin", content);
+    });
+    return this;
+  }
 }
 
 /**
