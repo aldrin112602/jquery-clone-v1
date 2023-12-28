@@ -115,3 +115,59 @@ class Selector extends Array {
 function $(selector) {
   return new Selector(selector);
 }
+
+/**
+ * Makes an HTTP GET request.
+ * @param {string} URL - The URL to request.
+ * @param {Object} [data] - The data to send with the request.
+ * @param {Function} [callback] - A function to execute when the request completes.
+ * @param {string} [dataType] - The type of data expected from the server.
+ */
+$.get = function (url, data, callback, dataType) {
+  var xhr = new XMLHttpRequest();
+  let type = dataType ?? null;
+  if (type === "jsonp") {
+    const callbackName = "jsonpCallback" + Math.round(100000 * Math.random());
+    url += (url.indexOf("?") === -1 ? "?" : "&") + "callback=" + callbackName;
+    window[callbackName] = function (response) {
+      document.body.removeChild(script);
+      delete window[callbackName];
+      callback && callback(response, 200);
+    };
+    var script = document.createElement("script");
+    script.src = url;
+    document.body.appendChild(script);
+    return;
+  }
+
+  switch (type) {
+    case "xml":
+      type = "application/xml";
+      break;
+    case "html":
+      type = "text/html";
+      break;
+    case "json":
+      type = "application/json";
+      xhr.responseType = "json";
+      break;
+    case "script":
+      type = "application/javascript";
+      break;
+    case "text":
+      type = "text/plain";
+      break;
+    default:
+      type = "application/x-www-form-urlencoded";
+      break;
+  }
+
+  xhr.open("GET", url, true);
+  xhr.setRequestHeader("Content-Type", type);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      callback && callback(xhr.response, xhr.status);
+    }
+  };
+  xhr.send(data ?? null);
+};
