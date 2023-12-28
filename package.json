@@ -1,0 +1,16 @@
+{
+  "name": "jquery-clone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "push": "git add . && git commit -m Updated && git push"
+  },
+  "keywords": [],
+  "author": {
+    "email": "caballeroaldrin02@gmail.com",
+    "name": "Aldrin Caballero",
+    "url": "https://github.com/aldrin112602/jquery-clone-v1"
+  },
+  "license": "ISC"
+}
