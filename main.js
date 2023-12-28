@@ -4,10 +4,10 @@ $(document).ready(function() {
       // Define a callback function to handle the JSONP response
       function handleJsonpResponse(response, status) {
         if (status === 200) {
-          console.log("JSONP Response:", response);
+          console.log(response);
           // Do something with the JSONP response
         } else {
-          console.error("Error:", status);
+          console.error(status);
         }
       }
 
@@ -16,7 +16,7 @@ $(document).ready(function() {
         "https://jsonplaceholder.typicode.com/todos/1",
         null,
         handleJsonpResponse,
-        "script"
+        "json"
       );
     })
 })

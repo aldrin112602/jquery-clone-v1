@@ -105,6 +105,36 @@ class Selector extends Array {
 
     return this;
   }
+
+  /**
+   * Sets the value of the first element in the collection.
+   * @param {string} value - The value to set.
+   * @returns {string} The value of the first element in the collection.
+   */
+  val(value) {
+    value && (this[0].value = value);
+    return this[0].value;
+  }
+
+  /**
+   * Sets the innerHTML of the first element in the collection.
+   * @param {string} value - The value to set.
+   * @returns {string} The innerHTML of the first element in the collection.
+   */
+  html(value) {
+    value && (this[0].innerHTML = value);
+    return this[0].innerHTML;
+  }
+
+  /**
+   * Sets the innerTEXT of the first element in the collection.
+   * @param {string} value - The value to set.
+   * @returns {string} The innerTEXT of the first element in the collection.
+   */
+  text(value) {
+    value && (this[0].innerText = value);
+    return this[0].innerText;
+  }
 }
 
 /**
